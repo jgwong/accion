@@ -8,5 +8,6 @@ runs:
           mkdir _deploy
           npm ci
           ./node_modules/.bin/gulp copy
+          ls -R _deploy
         shell: bash
 
