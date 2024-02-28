@@ -9,8 +9,15 @@ runs:
   steps:
       - name: SSH
         run: |
-          echo $SSH_KEY > /tmp/ssh_key
-          ssh -i /tmp/ssh_key git@git.wpengine.com info
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          touch ~/.ssh/private.key
+          touch ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/private.key
+          echo -e "$SSH_KEY" | tr -d '\r' > ~/.ssh/private.key
+          ssh-keyscan git@git.wpengine.com >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          ssh -i ~/.ssh/private.key git@git.wpengine.com info
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
