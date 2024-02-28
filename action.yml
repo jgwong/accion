@@ -3,8 +3,14 @@ description: 'My new Action'
 outputs:
   message:
     description: "Message"
+    value: ${{ steps.message.outputs.message }}
 runs:
   using: "composite"
   steps:
-      - run: ls
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+      - id: message
+        run: ls >> $GITHUB_OUTPUT
         shell: bash
