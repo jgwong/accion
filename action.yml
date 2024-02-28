@@ -12,7 +12,3 @@ runs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-      - id: message
-        run: ls >> $GITHUB_OUTPUT
-        shell: bash
-
