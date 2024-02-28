@@ -5,6 +5,8 @@ runs:
   steps:
       - name: Install dependencies
         run: |
+          mkdir _deploy
           npm ci
+          ./node_modules/.bin/gulp copy
         shell: bash
 
