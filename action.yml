@@ -21,13 +21,13 @@ runs:
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
 
-      - name: Install dependencies
+      - name: Install Node dependencies
         run: npm ci
         shell: bash
 
       - name: Checkout GitPush repository
         run: |
-          git clone git@git.wpengine.com:reverselogix.git _deploy
+          git clone git@git.wpengine.com:reverselogix.git -b main _deploy
           ls -R _deploy
         shell: bash
 
