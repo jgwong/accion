@@ -27,7 +27,7 @@ runs:
 
       - name: Checkout GitPush repository
         run: |
-          git clone git@git.wpengine.com:silentpushtr.git _deploy
+          git clone git@git.wpengine.com:reverselogix.git _deploy
           ls -R _deploy
         shell: bash
 
