@@ -3,10 +3,6 @@ description: 'My new Action'
 runs:
   using: "composite"
   steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
       - id: message
-        run: ls >> $GITHUB_OUTPUT
+        run: echo "hello" >> $GITHUB_OUTPUT
         shell: bash
