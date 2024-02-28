@@ -1,5 +1,9 @@
 name: 'Accion Super'
 description: 'My new Action'
+inputs:
+  ssh_key:
+     description: "Deployment SSH key"
+     required: true
 runs:
   using: "composite"
   steps:
@@ -8,5 +12,5 @@ runs:
           echo hello
         shell: bash
         env:
-          SSH_KEY: ${{ secrets.key }}
+          SSH_KEY: ${{ inputs.ssh_key }}
 
