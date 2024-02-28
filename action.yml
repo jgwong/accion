@@ -28,7 +28,6 @@ runs:
       - name: Checkout GitPush repository
         run: |
           git clone git@git.wpengine.com:reverselogix.git -b main _deploy
-          ls -R _deploy
         shell: bash
 
       - name: Compile and copy
