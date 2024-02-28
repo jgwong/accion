@@ -13,6 +13,8 @@ runs:
 
       - name: Install dependencies
         run: |
-          ssh git@git.wpengine.com info
+          echo $KEY
         shell: bash
+        env:
+          SUPER_SECRET: ${{ secrets.KEY }}
 
