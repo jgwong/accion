@@ -9,7 +9,7 @@ runs:
   steps:
       - name: Install dependencies
         run: |
-          echo hello
+          echo $SSH_KEY
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
