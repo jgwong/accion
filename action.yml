@@ -1,9 +1,5 @@
 name: 'Accion Super'
 description: 'My new Action'
-outputs:
-  message:
-    description: "Message"
-    value: ${{ steps.message.outputs.message }}
 runs:
   using: "composite"
   steps:
