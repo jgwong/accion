@@ -11,7 +11,7 @@ runs:
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          touch ~/.ssh/private.key
+          touch ~/.ssh/id_ed25519
           touch ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_ed25519
           echo -e "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
