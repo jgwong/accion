@@ -13,8 +13,8 @@ runs:
 
       - name: Install dependencies
         run: |
-          echo $KEY
+          echo $SSH_KEY
         shell: bash
         env:
-          SUPER_SECRET: ${{ secrets.KEY }}
+          SSH_KEY: ${{ secrets.KEY }}
 
