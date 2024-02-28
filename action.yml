@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - name: SSH
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -26,7 +26,11 @@ runs:
         run: npm ci
         shell: bash
 
+      - name: Checkout GitPush repository
+        run: git clone git@git.wpengine.com:silentpushtr.git
+        shell: bash
+
       - name: Compile and copy
-        run: mkdir _deploy && ./node_modules/.bin/gulp copy
+        run: ./node_modules/.bin/gulp copy
         shell: bash
 
