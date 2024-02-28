@@ -18,7 +18,6 @@ runs:
           ssh-keyscan git.wpengine.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
           ssh git@git.wpengine.com info
-          git clone git@git.wpengine.com:silentpushtr.git _deploy
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
