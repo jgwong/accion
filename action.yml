@@ -7,6 +7,16 @@ inputs:
 runs:
   using: "composite"
   steps:
+      - name: SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo $SSH_KEY > ~/.ssh/id_ed25519
+          ssh-keygen -R git.wpengine.com
+          ssh git@git.wpengine.com info
+        shell: bash
+        env:
+          SSH_KEY: ${{ inputs.ssh_key }}
+
       - name: Install dependencies
         run: npm ci
         shell: bash
@@ -14,15 +24,4 @@ runs:
       - name: Compile and copy
         run: mkdir _deploy && ./node_modules/.bin/gulp copy
         shell: bash
-
-      - name: SSH
-        run: |
-          cat ~/.ssh/known_hosts
-          mkdir -p ~/.ssh
-          echo $SSH_KEY > ~/.ssh/id_ed25519
-          ssh git@git.wpengine.com info
-        shell: bash
-        env:
-          SSH_KEY: ${{ inputs.ssh_key }}
-
 
