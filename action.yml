@@ -7,18 +7,17 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - name: Setup SSH
+      - name: SSH
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           touch ~/.ssh/private.key
           touch ~/.ssh/known_hosts
           chmod 600 ~/.ssh/private.key
-          echo "$SSH_KEY" > ~/.ssh/private.key
-          cat ~/.ssh/private.key
+          echo -e "$SSH_KEY" | tr -d '\r' > ~/.ssh/private.key
           ssh-keyscan git.wpengine.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          ssh git@git.wpengine.com info
+          ssh -i ~/.ssh/private.key git@git.wpengine.com info
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
@@ -28,6 +27,6 @@ runs:
         shell: bash
 
       - name: Compile and copy
-        run: ./node_modules/.bin/gulp copy
+        run: mkdir _deploy && ./node_modules/.bin/gulp copy
         shell: bash
 
