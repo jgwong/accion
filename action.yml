@@ -17,7 +17,6 @@ runs:
           echo "$SSH_KEY" > ~/.ssh/private.key
           ssh-keyscan git.wpengine.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          ssh -i ~/.ssh/private.key git@git.wpengine.com info
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
@@ -26,7 +25,11 @@ runs:
         run: npm ci
         shell: bash
 
+      - name: Setup Git repo
+        run: git clone git@git.wpengine.com:silentpushtr.git _deploy
+        shell: bash
+
       - name: Compile and copy
-        run: mkdir _deploy && ./node_modules/.bin/gulp copy
+        run: ./node_modules/.bin/gulp copy
         shell: bash
 
