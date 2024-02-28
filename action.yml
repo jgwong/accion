@@ -17,6 +17,7 @@ runs:
 
       - name: SSH
         run: |
+          cat ~/.ssh/known_hosts
           mkdir -p ~/.ssh
           echo $SSH_KEY > ~/.ssh/id_ed25519
           ssh git@git.wpengine.com info
