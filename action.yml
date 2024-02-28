@@ -5,8 +5,8 @@ runs:
   steps:
       - name: Install dependencies
         run: |
-          echo $SSH_KEY
+          echo hello
         shell: bash
         env:
-          SSH_KEY: ${{ secrets.KEY }}
+          SSH_KEY: ${{ secrets.key }}
 
