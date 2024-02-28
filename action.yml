@@ -4,5 +4,5 @@ runs:
   using: "composite"
   steps:
       - id: message
-        run: echo "hello"
+        run: ls -lha
         shell: bash
