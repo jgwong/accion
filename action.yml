@@ -5,10 +5,6 @@ runs:
   steps:
       - name: Install dependencies
         run: |
-          sudo apt upgrade
-          sudo apt-get install software-properties-common
-          sudo apt-add-repository ppa:chris-lea/node.js-legacy
-          sudo apt upgrade
-          sudo apt-cache showpkg nodejs
+          npm ci
         shell: bash
 
