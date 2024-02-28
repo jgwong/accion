@@ -4,5 +4,5 @@ runs:
   using: "composite"
   steps:
       - id: message
-        run: echo "hello" >> $GITHUB_OUTPUT
+        run: echo "hello"
         shell: bash
