@@ -6,4 +6,5 @@ runs:
       - name: Install dependencies
         run: |
           sudo apt-get install software-properties-common
+        shell: bash
 
