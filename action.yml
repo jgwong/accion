@@ -17,7 +17,6 @@ runs:
           echo -e "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
           ssh-keyscan git.wpengine.com >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          ssh git@git.wpengine.com info
         shell: bash
         env:
           SSH_KEY: ${{ inputs.ssh_key }}
@@ -27,7 +26,9 @@ runs:
         shell: bash
 
       - name: Checkout GitPush repository
-        run: git clone git@git.wpengine.com:silentpushtr.git
+        run: |
+          git clone git@git.wpengine.com:silentpushtr.git _deploy
+          ls -R _deploy
         shell: bash
 
       - name: Compile and copy
