@@ -3,10 +3,7 @@ description: 'My new Action'
 runs:
   using: "composite"
   steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-      - id: message
-        run: php --version
-        shell: bash
+      - name: Install dependencies
+        run: |
+          sudo apt-get install software-properties-common
+
