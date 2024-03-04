@@ -1,36 +1,15 @@
-name: 'Accion Super'
-description: 'My new Action'
-inputs:
-  ssh_key:
-     description: "Deployment SSH key"
-     required: true
+name: 'Punch theme compile'
+description: 'Compiles a Punch theme'
 runs:
   using: "composite"
   steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          touch ~/.ssh/id_ed25519
-          touch ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/id_ed25519
-          echo -e "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
-          ssh-keyscan git.wpengine.com >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-        shell: bash
-        env:
-          SSH_KEY: ${{ inputs.ssh_key }}
-
       - name: Install Node dependencies
         run: npm ci
         shell: bash
 
-      - name: Checkout GitPush repository
+      - name: Compile assets
         run: |
-          git clone git@git.wpengine.com:reverselogix.git -b main _deploy
-        shell: bash
-
-      - name: Compile and copy
-        run: ./node_modules/.bin/gulp copy
+          ./node_modules/.bin/gulp copy
+          ls -R
         shell: bash
 
